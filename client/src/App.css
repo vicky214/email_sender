@@ -1,0 +1,12 @@
+.form-container{
+  max-width: 400px;
+  margin:auto;
+  margin-top:38px;
+  border: 2px solid rgb(58, 46, 46);
+  border-radius: 5px;
+  padding:15px
+}
+
+.main{
+  background-color: aquamarine;
+}

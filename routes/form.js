@@ -5,19 +5,16 @@ const Form = require('../models/form')
 const nodemailer = require("nodemailer");
 require('dotenv').config()
 
-
-
-
 router.post('/data',(req,res)=>{
-    const {name,phone,message} = req.body;
-    if(!name || !phone || !message){
+    const {name,phone,email} = req.body;
+    if(!name || !phone || !email){
         res.json({error:"Please Add All The Fields"})
     }
     if(phone.length==10){
     const formData ={
         name,
         phone,
-        message
+        email
     }
     Form.create(formData)
     .then(data=>{
@@ -32,10 +29,10 @@ router.post('/data',(req,res)=>{
           });
           var mailinfo = transporter.sendMail({
             from: 'vicky214kumar@gmail.com', // sender address
-            to: 'admin@scizers.com', // list of receivers admin@scizers.com
+            to: email, // list of receivers admin@scizers.com
             subject: "Details Of User", // Subject line
             text:'text', // plain text body
-            html:`Name: ${name},<br> Phone: ${phone},<br> <h4>message:</h4> ${message}`
+            html:`Name: ${name},<br> Phone: ${phone}`
           });
           transporter.sendMail(mailinfo,function(err,data){
               if(err){

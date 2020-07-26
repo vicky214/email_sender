@@ -8,7 +8,7 @@ const formSchema = new mongoose.Schema({
         type:String,
         require:true
     },
-    message:{
+    email:{
         type:String,
         require:true
     }
